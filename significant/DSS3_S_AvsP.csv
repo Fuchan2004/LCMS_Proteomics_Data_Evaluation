@@ -1,57 +1,57 @@
 Significant_Overexpressed	Accession Number +	Significant_Underexpressed	Accession Number -
-SPO0024	SPO0024		
-		SPO0133	SPO0133
-SPO0222	SPO0222		
-SPO0239	SPO0239		
-SPO0473	SPO0473		
-SPO0568	SPO0568		
-		SPO0831	SPO0831
-		SPO1097	SPO1097
-SPO1192	SPO1192		
-SPO1436	SPO1436		
-		SPO1459	SPO1459
-		SPO1722	SPO1722
-		SPO1860	SPO1860
-		SPO2089	SPO2089
-SPO2102	SPO2102		
-SPO2170	SPO2170		
-		SPO2311	SPO2311
-SPO2332	SPO2332		
-		SPO2527	SPO2527
-		SPO2582	SPO2582
-SPO3778	SPO3778		
-		SPO3853	SPO3853
-		SPO3901	SPO3901
-		SPOA0387	SPOA0387
-		SPO0372	SPO0372
-		SPO2545	SPO2545
-		SPO3068	SPO3068
-		SPOA0337	SPOA0337
-SPO1496-DECOY	SPO1496-DECOY		
-SPO1982	SPO1982		
-		SPO0406-DECOY	SPO0406-DECOY
-		SPO0436-DECOY	SPO0436-DECOY
-		SPO0540-DECOY	SPO0540-DECOY
-		SPO0586-DECOY	SPO0586-DECOY
-		SPO0642-DECOY	SPO0642-DECOY
-		SPO0817-DECOY	SPO0817-DECOY
-		SPO1061-DECOY	SPO1061-DECOY
-		SPO1101-DECOY	SPO1101-DECOY
-		SPO1160-DECOY	SPO1160-DECOY
-		SPO1580	SPO1580
-		SPO1937-DECOY	SPO1937-DECOY
-		SPO2208-DECOY	SPO2208-DECOY
-		SPO2400	SPO2400
-		SPO2424-DECOY	SPO2424-DECOY
-		SPO2925-DECOY	SPO2925-DECOY
-		SPO2932-DECOY	SPO2932-DECOY
-		SPO3064	SPO3064
-		SPO3164-DECOY	SPO3164-DECOY
-		SPO3344-DECOY	SPO3344-DECOY
-		SPO3368-DECOY	SPO3368-DECOY
-		SPO3399	SPO3399
-		SPO3611-DECOY	SPO3611-DECOY
-		SPO3770-DECOY	SPO3770-DECOY
-		SPOA0055	SPOA0055
-		SPOA0086-DECOY	SPOA0086-DECOY
-		SPOA0172	SPOA0172
+chaperonin, 33 kDa	SPO0024		
+		PAN domain protein	SPO0133
+alanine dehydrogenase	SPO0222		
+Unknown	SPO0239		
+Unknown	SPO0473		
+Unknown	SPO0568		
+		Unknown	SPO0831
+		hypothetical protein	SPO1097
+hypothetical protein	SPO1192		
+L-carnitine dehydrogenase	SPO1436		
+		indolepyruvate oxidoreductase, IorA subunit, putative	SPO1459
+		Unknown	SPO1722
+		twin-arginine translocation pathway signal sequence domain protein	SPO1860
+		Unknown	SPO2089
+lipoic acid synthetase	SPO2102		
+metallo-beta-lactamase family protein	SPO2170		
+		hypothetical protein	SPO2311
+transporter, AcrB/AcrD/AcrF family	SPO2332		
+		6-aminohexanoate-cyclic-dimer hydrolase	SPO2527
+		Unknown	SPO2582
+oligopeptide/dipeptide ABC transporter, ATP-binding protein	SPO3778		
+		uroporphyrinogen-III synthase, putative	SPO3853
+		Unknown	SPO3901
+		Unknown	SPOA0387
+		Unknown	SPO0372
+		TRAP dicarboxylate transporter, DctP subunit, putative	SPO2545
+		Unknown	SPO3068
+		Unknown	SPOA0337
+ABC transporter, permease protein	SPO1496-DECOY		
+Unknown	SPO1982		
+		RNA polymerase sigma-32 factor	SPO0406-DECOY
+		Unknown	SPO0436-DECOY
+		Unknown	SPO0540-DECOY
+		acyl-carrier domain protein	SPO0586-DECOY
+		Unknown	SPO0642-DECOY
+		GTP-binding protein YchF	SPO0817-DECOY
+		Unknown	SPO1061-DECOY
+		propionyl-CoA carboxylase, alpha subunit	SPO1101-DECOY
+		Unknown	SPO1160-DECOY
+		Unknown	SPO1580
+		branched-chain amino acid ABC transporter, ATP-binding protein	SPO1937-DECOY
+		Unknown	SPO2208-DECOY
+		Unknown	SPO2400
+		L-idonate 5-dehydrogenase	SPO2424-DECOY
+		Sporulation related protein	SPO2925-DECOY
+		malate dehydrogenase	SPO2932-DECOY
+		Unknown	SPO3064
+		ATP synthase F1, alpha subunit	SPO3164-DECOY
+		Unknown	SPO3344-DECOY
+		Unknown	SPO3368-DECOY
+		Unknown	SPO3399
+		hypothetical protein	SPO3611-DECOY
+		glutamate synthase, small subunit	SPO3770-DECOY
+		Unknown	SPOA0055
+		Unknown	SPOA0086-DECOY
+		Unknown	SPOA0172

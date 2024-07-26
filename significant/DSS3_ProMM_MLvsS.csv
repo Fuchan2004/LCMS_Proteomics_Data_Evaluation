@@ -1,118 +1,118 @@
 Significant_Overexpressed	Accession Number +	Significant_Underexpressed	Accession Number -
-		SPO0023	SPO0023
-		SPO0047	SPO0047
-		SPO0050	SPO0050
-SPO0072	SPO0072		
-SPO0101	SPO0101		
-SPO0136	SPO0136		
-SPO0139	SPO0139		
-		SPO0258	SPO0258
-SPO0369	SPO0369		
-SPO0402	SPO0402		
-SPO0417	SPO0417		
-SPO0433	SPO0433		
-		SPO0546	SPO0546
-		SPO0578	SPO0578
-		SPO0579-DECOY	SPO0579-DECOY
-		SPO0594	SPO0594
-SPO0628a	SPO0628a		
-		SPO0678	SPO0678
-		SPO0690	SPO0690
-		SPO0725	SPO0725
-SPO0864	SPO0864		
-		SPO0876	SPO0876
-		SPO0992	SPO0992
-SPO0996	SPO0996		
-SPO1154	SPO1154		
-		SPO1188	SPO1188
-		SPO1274	SPO1274
-		SPO1298	SPO1298
-SPO1417	SPO1417		
-		SPO1438	SPO1438
-SPO1446	SPO1446		
-SPO1461	SPO1461		
-SPO1499	SPO1499		
-		SPO1500	SPO1500
-SPO1502	SPO1502		
-SPO1538	SPO1538		
-SPO1615	SPO1615		
-SPO1679	SPO1679		
-SPO1749	SPO1749		
-SPO1791	SPO1791		
-SPO1794	SPO1794		
-SPO1796	SPO1796		
-SPO1805	SPO1805		
-SPO1937	SPO1937		
-SPO1992	SPO1992		
-		SPO2006	SPO2006
-		SPO2187	SPO2187
-		SPO2193	SPO2193
-SPO2212	SPO2212		
-		SPO2326	SPO2326
-SPO2346	SPO2346		
-		SPO2450	SPO2450
-SPO2460	SPO2460		
-SPO2515	SPO2515		
-SPO2589	SPO2589		
-SPO2591	SPO2591		
-SPO2791	SPO2791		
-SPO2869	SPO2869		
-SPO2961	SPO2961		
-		SPO2965	SPO2965
-SPO2968	SPO2968		
-SPO2977	SPO2977		
-		SPO3025	SPO3025
-		SPO3030	SPO3030
-SPO3113	SPO3113		
-		SPO3133	SPO3133
-		SPO3203	SPO3203
-SPO3255	SPO3255		
-		SPO3299	SPO3299
-SPO3346	SPO3346		
-SPO3358	SPO3358		
-SPO3384	SPO3384		
-SPO3388	SPO3388		
-SPO3516	SPO3516		
-		SPO3518	SPO3518
-		SPO3535	SPO3535
-SPO3551	SPO3551		
-		SPO3609	SPO3609
-SPO3660	SPO3660		
-SPO3701	SPO3701		
-SPO3903	SPO3903		
-		SPOA0017	SPOA0017
-		SPOA0088	SPOA0088
-SPOA0107	SPOA0107		
-		SPOA0146	SPOA0146
-		SPOA0218	SPOA0218
-		SPOA0429	SPOA0429
-SPO0175	SPO0175		
-SPO0193-DECOY	SPO0193-DECOY		
-SPO0200	SPO0200		
-		SPO0766	SPO0766
-SPO0931	SPO0931		
-SPO1023	SPO1023		
-SPO1204-DECOY	SPO1204-DECOY		
-SPO1341-DECOY	SPO1341-DECOY		
-		SPO1368	SPO1368
-SPO1740	SPO1740		
-		SPO2412	SPO2412
-		SPO2419	SPO2419
-		SPO2572	SPO2572
-SPO3748	SPO3748		
-SPOA0297	SPOA0297		
-		SPOA0425	SPOA0425
-		SPO0033	SPO0033
-		SPO0053	SPO0053
-		SPO0063-DECOY	SPO0063-DECOY
-		SPO0086-DECOY	SPO0086-DECOY
-		SPO0119-DECOY	SPO0119-DECOY
-		SPO0591-DECOY	SPO0591-DECOY
-		SPO0647	SPO0647
-		SPO0663-DECOY	SPO0663-DECOY
-		SPO0814-DECOY	SPO0814-DECOY
-		SPO0852-DECOY	SPO0852-DECOY
-		SPO0858-DECOY	SPO0858-DECOY
-		SPO1291-DECOY	SPO1291-DECOY
-		SPO1655	SPO1655
-		SPO1764-DECOY	SPO1764-DECOY
+		Unknown	SPO0023
+		Unknown	SPO0047
+		ABC transporter, periplasmic substrate-binding protein	SPO0050
+Unknown	SPO0072		
+peptide/opine/nickel uptake family ABC transporter, periplasmic substrate-binding protein	SPO0101		
+Unknown	SPO0136		
+ATPase, MoxR family	SPO0139		
+		Unknown	SPO0258
+Unknown	SPO0369		
+competence protein ComM	SPO0402		
+Unknown	SPO0417		
+ABC transporter, permease protein	SPO0433		
+		hypothetical protein	SPO0546
+		Unknown	SPO0578
+		acetyl-CoA carboxylase, biotin carboxylase, putative	SPO0579-DECOY
+		dihydroxypropanesulfonate-3-dehydrogenase	SPO0594
+hypothetical protein	SPO0628a		
+		agmatinase, putative	SPO0678
+		hypothetical protein	SPO0690
+		Unknown	SPO0725
+glucokinase, putative	SPO0864		
+		(S)-ureidoglycine aminohydrolase	SPO0876
+		thioredoxin SoxW	SPO0992
+diheme cytochrome c SoxA	SPO0996		
+Unknown	SPO1154		
+		putative protein TIGR00275	SPO1188
+		Unknown	SPO1274
+		Unknown	SPO1298
+helicase, putative	SPO1417		
+		hypothetical protein	SPO1438
+Unknown	SPO1446		
+Unknown	SPO1461		
+hydrolase, alpha/beta fold family	SPO1499		
+		Unknown	SPO1500
+Unknown	SPO1502		
+Unknown	SPO1538		
+Unknown	SPO1615		
+DNA-binding response regulator CtrA	SPO1679		
+Unknown	SPO1749		
+sulfate/tungstate uptake family ABC transporter, periplasmic substrate-binding protein	SPO1791		
+formate dehydrogenase, gamma subunit	SPO1794		
+formate dehydrogenase, alpha subunit, putative	SPO1796		
+Unknown	SPO1805		
+branched-chain amino acid ABC transporter, ATP-binding protein	SPO1937		
+hypothetical protein	SPO1992		
+		Unknown	SPO2006
+		TRAP transporter solute receptor, TAXI family	SPO2187
+		urocanate hydratase	SPO2193
+enoyl-CoA hydratase/isomerase family protein	SPO2212		
+		hypothetical protein	SPO2326
+sarcosine oxidase, delta subunit family	SPO2346		
+		Unknown	SPO2450
+Unknown	SPO2460		
+Unknown	SPO2515		
+aminotransferase, classes I and II	SPO2589		
+27 kDa outer membrane protein, putative	SPO2591		
+acetyl-coenzyme A synthetase	SPO2791		
+precorrin-6Y C5,15-methyltransferase (decarboxylating)	SPO2869		
+Unknown	SPO2961		
+		ribosomal protein L33	SPO2965
+hypothetical protein	SPO2968		
+adenylate/guanylate cyclase	SPO2977		
+		enoyl-CoA hydratase/isomerase family protein	SPO3025
+		Unknown	SPO3030
+putative protein TIGR00051	SPO3113		
+		hypothetical protein	SPO3133
+		guanosine-3',5'-bis(Diphosphate) 3'-pyrophosphohydrolase, putative	SPO3203
+16S rRNA processing protein RimM	SPO3255		
+		Unknown	SPO3299
+radical SAM enzyme, Cfr family	SPO3346		
+serine/threonine protein phosphatase family protein	SPO3358		
+Unknown	SPO3384		
+Unknown	SPO3388		
+transcription termination/antitermination factor NusG	SPO3516		
+		hypothetical protein	SPO3518
+		Unknown	SPO3535
+Unknown	SPO3551		
+		Unknown	SPO3609
+urea amidolyase-like protein	SPO3660		
+benzoyl-CoA oxygenase, B subunit	SPO3701		
+6-pyruvoyl tetrahydropterin synthase, putative	SPO3903		
+		Unknown	SPOA0017
+		Unknown	SPOA0088
+Unknown	SPOA0107		
+		Unknown	SPOA0146
+		Unknown	SPOA0218
+		Unknown	SPOA0429
+flagellar L-ring protein FlgH	SPO0175		
+flagellar hook-associated protein FlgK, putative	SPO0193-DECOY		
+Unknown	SPO0200		
+		Unknown	SPO0766
+Unknown	SPO0931		
+response regulator	SPO1023		
+cell division protein FtsZ	SPO1204-DECOY		
+alkane-1 monooxygenase, putative	SPO1341-DECOY		
+		Unknown	SPO1368
+Unknown	SPO1740		
+		aldolase, putative	SPO2412
+		hypothetical protein	SPO2419
+		Unknown	SPO2572
+Unknown	SPO3748		
+Unknown	SPOA0297		
+		Unknown	SPOA0425
+		Unknown	SPO0033
+		Unknown	SPO0053
+		transcription termination factor NusA	SPO0063-DECOY
+		lipoprotein, putative	SPO0086-DECOY
+		Unknown	SPO0119-DECOY
+		Unknown	SPO0591-DECOY
+		Unknown	SPO0647
+		Unknown	SPO0663-DECOY
+		Unknown	SPO0814-DECOY
+		Unknown	SPO0852-DECOY
+		Unknown	SPO0858-DECOY
+		Unknown	SPO1291-DECOY
+		Unknown	SPO1655
+		Unknown	SPO1764-DECOY
