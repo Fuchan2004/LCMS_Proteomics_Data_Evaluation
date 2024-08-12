@@ -6,7 +6,7 @@ The files downloaded from scaffold are '.xls' files and contain a header and two
 
 Make sure that the annotations are listed under Identified Proteins. If there are no annotions but accession numbers instead, use the script 'annotate.py' to replace the accession number with the annotations. 
 
-USAGE: 
+USAGE: python format_proteomefile.py <foldername>
 '''
 
 import glob
