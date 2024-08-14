@@ -50,4 +50,22 @@ USAGE:
 python annotate.py </path/annotations_file.txt> </path/input_foldername/>
 ```
 
-**Now we are ready to get started with the proteome evaluation!**
+**Now we are ready to get started with the evaluation of our proteomes!**
+
+## Statistics
+The data typically consisting of biological triplicates need to be evaluated statistically. Specifically:
+- *For the x-y-plots* 
+  1. we calcualte the mean value of the triplicate measurements to plot against the mean of the treatment to be compared to
+  2. we need to determine the standard deviation to plot as error bars
+ 
+- *For the volcano-plots*
+  1. we determine the log2 fold change
+  2. we need the -log(p-value) to determine whether the changes/differences are significant or not.
+ 
+Use the script `statistics.py` to determine all the necessary characteristics for plotting and add them as new columns to the end of the files. The created files can then be used directly as inputs for the plotting scripts to generate the desired figures. USAGE: 
+```python
+python statistics.py </path/input_foldername/>
+```
+
+### Plotting
+
