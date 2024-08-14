@@ -19,6 +19,8 @@ def format_proteomefiles(folder=''):
     
     for files in glob.glob(folder + '*.txt'):
         filename = file.split('/')[-1] #define the filename 
+        print(filename)
+        
         # Read the original file
         with open(folder+filename, 'r') as file:
             lines = files.readlines()
