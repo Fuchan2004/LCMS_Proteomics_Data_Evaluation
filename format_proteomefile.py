@@ -32,12 +32,12 @@ def format_proteomefiles(folder=''):
             print(columns)
             
             # Rename columns
-            if len(columns) == 12:
-                columns[2] = 'Annotation'
-                columns[8] = '1'
-                columns[9] = '2'
-                columns[10] = '3'
-                columns[11] = 'Control'
+            if len(columns) == 13:
+                columns[3] = 'Annotation'
+                columns[9] = '1'
+                columns[10] = '2'
+                columns[11] = '3'
+                columns[12] = 'Control'
 
             # Filter selected columns
             filtered_columns = [columns[i] for i in selected_columns]
