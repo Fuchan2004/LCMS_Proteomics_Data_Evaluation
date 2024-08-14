@@ -23,7 +23,7 @@ def format_proteomefiles(folder=''):
         
         # Read the original file
         with open(filepath, 'r') as file:
-            lines = files.readlines()
+            lines = file.readlines()
         
         # First, rename columns such that they are compatible with the scripts.
         # Process each line and rename columns
