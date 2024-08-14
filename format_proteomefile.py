@@ -28,11 +28,11 @@ def format_proteomefiles(folder=''):
         # First, rename columns such that they are compatible with the scripts.
         header = lines[0].strip().split('\t')
         if len(header) == 13:
-                columns[3] = 'Annotation'
-                columns[9] = '1'
-                columns[10] = '2'
-                columns[11] = '3'
-                columns[12] = 'Control'
+                header[3] = 'Annotation'
+                header[9] = '1'
+                header[10] = '2'
+                header[11] = '3'
+                header[12] = 'Control'
 
         # Filter selected columns for the header
         filtered_header = [header[i] for i in selected_columns]
