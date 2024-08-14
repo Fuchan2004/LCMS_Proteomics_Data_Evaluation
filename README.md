@@ -28,11 +28,6 @@ The files downloaded from scaffold are `.xls` files and contain a header and two
 
 `\ # \ Visible? \ Identifited Proteins(XXXX) \ Accession Number \ Alternate ID \ Molecular Weight \ Protein Grouping Ambiguity \ Taxonomy \ CONTROL \ REPLICATE_1 \ REPLICATE_2 \ REPLICATE_3 \`
 
-### Adding annotations
-Sometimes it can happen that the reference genome does not contain annotations, meaning there are no annotations listed in the `Identified proteins (XXX)` column. In that case you will need to add the annotations corresponding to the Accession Number. Use the script `annotate.py` to replace the accession number with the annotations in the `Identified proteins (XXX)` column. 
-
-USAGE: 
-
 ### Formatting files
 To create volcano plots and xy plots from your Scaffold output, the files need to be in a specific format to run with this code. The script `format_proteomefile.py` can be used to format the files in the desired way. Essentially what it does is: 
 1. Select the columns used in the analysis (= removing columns that are redundant) and save them to a new file. 
@@ -46,3 +41,13 @@ USAGE:
 ```python
 python format_proteomefile.py <foldername>
 ```
+
+### Adding annotations
+Sometimes it can happen that the reference genome does not contain annotations, meaning there are no annotations listed in the `Annotations` column. In that case you will need to add the annotations corresponding to the Accession Number. Do that **after** formatting the files. Only files with the extention `*_formatted.txt` can be annotated. Use the script `annotate.py` to replace the accession number with the annotations in the `Annotations` column. 
+
+USAGE: 
+```python
+python annotate.py </path/annotations_file.txt> </path/input_foldername/>
+```
+
+**Now we are ready to get started with the proteome evaluation!**
