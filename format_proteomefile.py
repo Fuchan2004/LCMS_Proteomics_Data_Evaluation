@@ -16,13 +16,13 @@ import sys
 def format_proteomefiles(folder=''):
     
     selected_columns = [1, 3, 4, 9, 10, 11, 12]
-    
-    for files in glob.glob(folder + '*.txt'):
-        filename = file.split('/')[-1] #define the filename 
-        print(filename)
+
+    for filepath in glob.glob(os.path.join(folder, '*.txt')):
+        filename = os.path.basename(filepath)  # Get the filename
+        print(f"Processing file: {filename}")
         
         # Read the original file
-        with open(folder+filename, 'r') as file:
+        with open(filepath, 'r') as file:
             lines = files.readlines()
         
         # First, rename columns such that they are compatible with the scripts.
@@ -31,7 +31,6 @@ def format_proteomefiles(folder=''):
         for line in lines:
             # Split the line into columns based on tab delimiter
             columns = line.strip().split('\t')
-            print(columns)
             
             # Rename columns
             if len(columns) == 13:
@@ -43,25 +42,16 @@ def format_proteomefiles(folder=''):
 
             # Filter selected columns
             filtered_columns = [columns[i] for i in selected_columns]
-            print(filtered_columns)
             
             # Join the filtered columns back into a line
             processed_line = '\t'.join(filtered_columns) + '\n'
             renamed_lines.append(processed_line)
-            
-            # Join the columns back into a line
-            renamed_line = '\t'.join(columns) + '\n'
-            renamed_lines.append(renamed_line)
-            print(renamed_lines)
 
         # Sort by accession number
-        sorted_lines = sorted(renamed_lines, key=lambda x: x.split('\t')[3])  
-        print(sorted_lines)
-        
+        sorted_lines = sorted(renamed_lines, key=lambda x: x.split('\t')[3])
         
         # Write the sorted and filtered lines back to a new file
-        output_file_path = file_path.replace('.txt', '_formatted.txt')
-        print(output_file_path)
+        output_file_path = filepath.replace('.txt', '_formatted.txt')    
         
         with open(output_file_path, 'w') as file:
             file.writelines(sorted_lines)
@@ -74,6 +64,10 @@ if __name__ == "__main__":
     if len(sys.argv) !=2: # If there is more than 1 argument to call this script, it will provide guidance on how to use it.
         print("Usage: python format_proteomefile.py <input_foldername>")
         sys.exit(1)
+    
+    folder = sys.argv[1]
+    format_proteomefiles(folder)
+
 '''
     for frame, translation in translation_dict.items(): 
             output_list.append(frame + '\t' + translation) # fill list with frame tab delimited with the respective translation from the translation_dict (= output of six-frame-tranlation.py)
