@@ -63,6 +63,6 @@ def format_proteomefiles(folder=''):
 
 if __name__ == "__main__": 
     
-    if len(sys.argv) !=1: # If there is more than 1 argument to call this script, it will provide guidance on how to use it.
+    if len(sys.argv) !=2: # If there is more than 1 argument to call this script, it will provide guidance on how to use it.
         print("Usage: python format_proteomefile.py <foldername>")
         sys.exit(1)
