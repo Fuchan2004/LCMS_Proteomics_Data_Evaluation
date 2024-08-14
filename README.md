@@ -7,15 +7,21 @@ This repository contains instructions and code to plot x/y treatment plots and v
 ### Conda Environment
 The environment necessary to run the pipeline can be created from the 'environment.yaml' file in this repository. The enviornment name is `MS_plot`: 
 
-```conda envs create -f environment.yaml```
+```
+conda envs create -f environment.yaml
+```
 
 Once the environment is done building, check that the new environment was installed correctly:
 
-```conda info --envs```
+```
+conda info --envs
+```
 
 Activate the environment: 
 
-```conda activate MS_plot```
+```
+conda activate MS_plot
+```
 
 ### Pre-formatting
 The files downloaded from scaffold are `.xls` files and contain a header and two lines at the end of the file (one empty line, second line containing the string 'END OF FILE') which need to be removed prior to uploading the data. After removing the header and footer, save the files as *.txt file (tab delimited) and upload them to your desired folder. The file should have 12 columns, the number of rows can be variable. Column names are: 
