@@ -24,39 +24,35 @@ def format_proteomefiles(folder=''):
         # Read the original file
         with open(filepath, 'r') as file:
             lines = file.readlines()
-        
+       
         # First, rename columns such that they are compatible with the scripts.
-        # Process each line and rename columns
-        renamed_lines = []
-        for line in lines:
-            # Split the line into columns based on tab delimiter
-            columns = line.strip().split('\t')
-            
-            # Rename columns
-            if len(columns) == 13:
+        header = lines[0].strip().split('\t')
+        if len(header) == 13:
                 columns[3] = 'Annotation'
                 columns[9] = '1'
                 columns[10] = '2'
                 columns[11] = '3'
                 columns[12] = 'Control'
 
-            # Filter selected columns
+        # Filter selected columns for the header
+        filtered_header = [header[i] for i in selected_columns]
+        renamed_lines = ['\t'.join(filtered_header) + '\n']
+        
+        # Read in new header and combine with the filtered columns to be written to a new file
+        for line in lines[1:]:
+            columns = line.strip().split('\t')
             filtered_columns = [columns[i] for i in selected_columns]
-            
-            # Join the filtered columns back into a line
-            processed_line = '\t'.join(filtered_columns) + '\n'
-            renamed_lines.append(processed_line)
-
-        # Sort by accession number
-        sorted_lines = sorted(renamed_lines, key=lambda x: x.split('\t')[3])
+            renamed_lines.append('\t'.join(filtered_columns) + '\n')
+        
+        # Sort by accession number (index 1 in the filtered columns)
+        sorted_lines = renamed_lines[:1] + sorted(renamed_lines[1:], key=lambda x: x.split('\t')[1])
         
         # Write the sorted and filtered lines back to a new file
-        output_file_path = filepath.replace('.txt', '_formatted.txt')    
+        output_file_path = filepath.replace('.txt', '_formatted.txt')
         
         with open(output_file_path, 'w') as file:
             file.writelines(sorted_lines)
-
-        # CONTROL line: 
+        
         print(f"Formatted file written to: {output_file_path}")
 
 if __name__ == "__main__": 
@@ -67,14 +63,3 @@ if __name__ == "__main__":
     
     folder = sys.argv[1]
     format_proteomefiles(folder)
-
-'''
-    for frame, translation in translation_dict.items(): 
-            output_list.append(frame + '\t' + translation) # fill list with frame tab delimited with the respective translation from the translation_dict (= output of six-frame-tranlation.py)
-        full_output = '\n'.join(output_list) # define full_output, so we separate each frame + translation into new lines. 
-
-        outfilename = output_file
-
-        with open(outfilename, 'w') as f: # write the frame + translation into new file with user specified filename.
-            f.write(full_output)
-'''
