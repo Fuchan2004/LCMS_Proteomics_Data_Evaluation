@@ -1,0 +1,12 @@
+name: MS_plot
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.12.4
+  - numpy>=2.0
+  - pandas>=2.2
+  - matplotlib>=3.9
+  - jupyter>=1.0
+  - ipython>=5.5
+  - scipy>=1.14
