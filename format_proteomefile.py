@@ -15,7 +15,7 @@ import sys
 
 def format_proteomefiles(folder=''):
     
-    selected_columns = [0, 2, 3, 8, 9, 10, 11]
+    selected_columns = [1, 3, 4, 9, 10, 11, 12]
     
     for files in glob.glob(folder + '*.txt'):
         filename = file.split('/')[-1] #define the filename 
