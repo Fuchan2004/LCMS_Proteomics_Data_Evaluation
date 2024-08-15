@@ -9,7 +9,7 @@ This script is used to generate statistics important for creating xy-plots and v
     5. Determine log2fold changes
     6. Calculate p-values
 
-USAGE: python statistics.py </path/input_filename_1> </path/output_filename/>
+USAGE: python statistics.py </path/input_filename_1> </path/input_filename_2/>
 '''
 
 import os
@@ -31,12 +31,29 @@ def merge_and_format(df1, df2, suf_1='', suf_2=''):
     
     return merged_df
 
+def calculate_log2(df1, df2):
+    log2 = np.log2(df1.div(df2))
+    log2.fillna(0, inplace=True)
+    return log2
+
+def calculate_pvalue(df1, df2):
+    num_values = df1.shape[0]
+    p_values = []
+    
+    for row in range(num_values):
+        ttest_result = stats.ttest_ind(df1.iloc[row].values, df2.iloc[row].values)
+        p_values.append(ttest_result.pvalue)
+    
+    transformed_pvals = -1 * np.log10(num_values * np.array(p_values))
+    return transformed_pvals
+
 def normalization(file_1, file_2):    
     filename_1 = os.path.basename(file_1)
     filename_2 = os.path.basename(file_2)
     print(f"Normalizing values in files: {filename_1}, {filename_2}")
 
     # assign variables for the conditions
+    strain = filename_1.split('_')[1]
     medium_1 = filename_1.split('_')[2]
     medium_2 = filename_2.split('_')[2]
     phase_1 = filename_1.split('_')[3]
@@ -80,39 +97,28 @@ def normalization(file_1, file_2):
     combined_df[f'Row_Average_{suf_2}'] = combined_df[[f'norms_1_{suf_2}', f'norms_2_{suf_2}', f'norms_3_{suf_2}']].mean(axis=1)
     combined_df[f'STD_{suf_2}'] = combined_df[[f'norms_1_{suf_2}', f'norms_2_{suf_2}', f'norms_3_{suf_2}']].std(axis=1)
 
-# After your merge and normalization function
-def calculate_log2(df1, df2):
-    log2 = np.log2(df1.div(df2))
-    log2.fillna(0, inplace=True)
-    return log2
+    # Add log2 fold change and p-values to your combined_df
+    log2_df = calculate_log2(combined_df[f'Row_Average_{suf_1}'], combined_df[f'Row_Average_{suf_2}'])
+    pval_df = calculate_pvalue(combined_df[[f'norms_1_{suf_1}', f'norms_2_{suf_1}', f'norms_3_{suf_1}']],
+                           combined_df[[f'norms_1_{suf_2}', f'norms_2_{suf_2}', f'norms_3_{suf_2}']])
 
-def calculate_pvalue(df1, df2):
-    num_values = df1.shape[0]
-    p_values = []
+    combined_df['Log2_Fold_Change'] = log2_df
+    combined_df['Transformed_P_Value'] = pval_df
+
+    # Get the directory of the input files
+    input_directory = os.path.dirname(file_1)
+
+    # Create the output file path using the same directory
+    if medium_1 == medium_2: 
+        output_filename = os.path.join(input_directory, f'{strain}_{medium_1}_{phase_1}VS{phase_2}.txt')
+    elif phase_1 == phase_2: 
+        output_filename = os.path.join(input_directory, f'{strain}_{phase_1}_{medium_1}VS{medium_2}.txt')
     
-    for row in range(num_values):
-        ttest_result = stats.ttest_ind(df1.iloc[row].values, df2.iloc[row].values)
-        p_values.append(ttest_result.pvalue)
-    
-    transformed_pvals = -1 * np.log10(num_values * np.array(p_values))
-    return transformed_pvals
+    combined_df.to_csv(output_filename, sep='\t', index=False)
 
-# Add log2 fold change and p-values to your combined_df
-log2_df = calculate_log2(df1, df2)
-pval_df = calculate_pvalue(df1, df2)
-
-combined_df['Log2_Fold_Change'] = log2_df
-combined_df['Transformed_P_Value'] = pval_df
-
-# Save the updated combined_df with all the calculated columns
-output_filename = f'combined_{filename_1}_{filename_2}.txt'
-combined_df.to_csv(output_filename, sep='\t', index=False)
-
-print(f"Log2 fold change and p-values added. Data written to: {output_filename}"
-
+    print(f"Log2 fold change and p-values added. Data written to: {output_filename}")
 
 if __name__ == "__main__": 
-    
     if len(sys.argv) != 3:
         print("Usage: python statistics.py <input_filename_1> <input_filename_2>")
     else:
