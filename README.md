@@ -24,7 +24,7 @@ conda activate MS_plot
 ```
 
 ### Pre-formatting
-The files downloaded from scaffold are `.xls` files and contain a header and two lines at the end of the file (one empty line, second line containing the string 'END OF FILE') which need to be removed prior to uploading the data. After removing the header and footer, save the files as *.txt file (tab delimited) and upload them to your desired folder. The file should have 12 columns, the number of rows can be variable. Column names are: 
+The files downloaded from scaffold are `.xls` files and contain a header and two lines at the end of the file (one empty line, second line containing the string 'END OF FILE') which need to be removed prior to uploading the data. After removing the header and footer, save the files as *.txt file (tab delimited) and upload them to your desired folder. The file name must have following format: **DATE_STRAIN_MEDIUM_GROWTHPHASE.txt** The file should have 12 columns, the number of rows can be variable. Column names are: 
 
 `\ # \ Visible? \ Identifited Proteins(XXXX) \ Accession Number \ Alternate ID \ Molecular Weight \ Protein Grouping Ambiguity \ Taxonomy \ CONTROL \ REPLICATE_1 \ REPLICATE_2 \ REPLICATE_3 \`
 
@@ -62,9 +62,9 @@ The data typically consisting of biological triplicates need to be evaluated sta
   1. we determine the log2 fold change
   2. we need the -log(p-value) to determine whether the changes/differences are significant or not.
  
-Use the script `statistics.py` to determine all the necessary characteristics for plotting and add them as new columns to the end of the files. The created files can then be used directly as inputs for the plotting scripts to generate the desired figures. USAGE: 
+Use the script `statistics.py` to merge the two files that need to be compared, determine all the necessary characteristics and statistics for plotting and add those numbers as new columns to the end of the files. The created file can then be used directly as input for the plotting scripts to generate the desired figures. USAGE: 
 ```python
-python statistics.py </path/input_foldername/>
+python statistics.py </path/input_filename_1/> </path/input_filename_2/>
 ```
 
 ### Plotting
