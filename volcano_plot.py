@@ -28,11 +28,11 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.offline import plot
 
-def volcano_plot(title, x_axis_title="log2 fold change", y_axis_title="-log10 pvalue", point_radius=4, log2_fold_change, transformed_pvalues, annotations, output_path):
+def volcano_plot(title, log2_fold_change, transformed_pvalues, annotations, output_path, x_axis_title="log2 fold change", y_axis_title="-log10 pvalue", point_radius=4):
 
     fig = go.Figure()
     fig.update_layout(
-        title=plot_title,
+        title=title,
         xaxis_title=x_axis_title,
         yaxis_title=y_axis_title,
         paper_bgcolor='white',
