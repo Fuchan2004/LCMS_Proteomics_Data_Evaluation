@@ -88,6 +88,13 @@ First create a new folder that you would like to store your figure files in. Use
 python xy_plot.py </path/input_filename.txt> </path/output_foldername/>
 python volcano_plot.py </path/input_filename.txt> </path/output_foldername/>
 ```
-
+Alternatively, you can loop over all the files that you would like to create the figures for with a for-loop such as the following one:
+```
+for file in /path/to/final/data/*.txt
+do
+    python xy_plot.py "$file" /path/to/FIGURES/
+    python volcano_plot.py "$file" /path/to/FIGURES/
+done
+```
 **This is it! ENJOY YOUR DATA!**
 
