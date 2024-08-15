@@ -38,7 +38,7 @@ To create volcano plots and xy plots from your Scaffold output, the files need t
 The new file will be saved as *filename*`_formatted.txt`
 
 USAGE: 
-```python
+```
 python format_proteomefile.py <foldername>
 ```
 
@@ -46,7 +46,7 @@ python format_proteomefile.py <foldername>
 Sometimes it can happen that the reference genome does not contain annotations, meaning there are no annotations listed in the `Annotations` column. In that case you will need to add the annotations corresponding to the Accession Number. Do that **after** formatting the files. Only files with the extention `*_formatted.txt` can be annotated. Use the script `annotate.py` to replace the accession number with the annotations in the `Annotations` column. 
 
 USAGE: 
-```python
+```
 python annotate.py </path/annotations_file.txt> </path/input_foldername/>
 ```
 
@@ -62,10 +62,32 @@ The data typically consisting of biological triplicates need to be evaluated sta
   1. we determine the log2 fold change
   2. we need the -log(p-value) to determine whether the changes/differences are significant or not.
  
-Use the script `statistics.py` to merge the two files that need to be compared, determine all the necessary characteristics and statistics for plotting and add those numbers as new columns to the end of the files. The created file can then be used directly as input for the plotting scripts to generate the desired figures. USAGE: 
-```python
+Use the script `statistics.py` to merge the two files that need to be compared, determine all the necessary characteristics and statistics for plotting and add those numbers as new columns to the end of the files. The created file can then be used directly as input for the plotting scripts to generate the desired figures. 
+
+USAGE: 
+```
 python statistics.py </path/input_filename_1/> </path/input_filename_2/>
 ```
 
-### Plotting
+The output files will have following filename: STRAIN_SHAREDPHASE_MEDIUM1VSMEDIUM2.txt or STRAIN_SHAREDMEDIUM_PHASE1_PHASE2.txt
+
+## Plotting
+Finally, the data can be plotted. The input file needs to have 25 columns, where the extension '_1' is condition 1, and '_2' is condition 2 (whatever is in the last part of the filename: 
+`#_1     Annotation_1    Accession Number        1_1     2_1     3_1     Control_1       norms_1_1       norms_2_1       norms_3_1       #_2     Annotation_2    1_2     2_2     3_2     Control_2       norms_1_2             norms_2_2       norms_3_2       Row_Average_1   STD_1   Row_Average_2   STD_2   Log2_Fold_Change        Transformed_P_Value`
+
+In case you followed the previous steps until now, the files you have should already be in the correct format (filename: STRAIN_SHAREDPHASE_MEDIUM1VSMEDIUM2.txt or STRAIN_SHAREDMEDIUM_PHASE1_PHASE2.txt).
+
+There are two plots that can be generated with the provided scripts: 
+1. XY-plots including a linear regression and computation of R**2 value.
+2. Volcano plots (transformed p-value vs. log2 fold change)
+
+Both scripts will create a figure in *pdf* and one in *html* format. The html file will allow you to look at your data in an interactive hover-over plot. When hovering over the points, the annotation will be displayed.
+
+First create a new folder that you would like to store your figure files in. Use following scripts to create the plots: 
+```
+python xy_plot.py </path/input_filename.txt> </path/output_foldername/>
+python volcano_plot.py </path/input_filename.txt> </path/output_foldername/>
+```
+
+**This is it! ENJOY YOUR DATA!**
 
