@@ -139,8 +139,6 @@ def plot_and_regression(df1, df2, df3, df4, df5, title, output_path, width=1000,
     output_pdf = os.path.join(output_path, f"{title}.pdf")
     fig.write_image(output_pdf)
 
-    fig.show()
-
     return slope, intercept, std_err, df1, df2, df3
 
 if __name__ == "__main__": 
