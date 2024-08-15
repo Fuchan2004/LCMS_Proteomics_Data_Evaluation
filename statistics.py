@@ -12,105 +12,108 @@ This script is used to generate statistics important for creating xy-plots and v
 USAGE: python statistics.py </path/input_filename_1> </path/output_filename/>
 '''
 
-import glob
 import os
 import sys
+import pandas as pd
+import numpy as np
+import scipy.stats as stats
 
+def merge_and_format(df1, df2, suf_1='', suf_2=''):
+    # Merge the dataframes based on "Accession Number"
+    merged_df = pd.merge(df1, df2, on="Accession Number", how="outer", suffixes=(suf_1, suf_2))
+    
+    # Fill missing values with 0
+    merged_df.fillna(0, inplace=True)
+    
+    # Replace 0 in annotations with "Unknown"
+    merged_df[f'Annotation{suf_1}'] = merged_df[f'Annotation{suf_1}'].replace(0, "Unknown")
+    merged_df[f'Annotation{suf_2}'] = merged_df[f'Annotation{suf_2}'].replace(0, "Unknown")
+    
+    return merged_df
 
 def normalization(file_1, file_2):    
-    filename_1 = os.path.basename(file_1)  # Get the filename
-    filename_2 = os.path.basename(file_2)  # Get the filename
-    print(f"Normalizing values in file: {filename_1, filename_2}")
+    filename_1 = os.path.basename(file_1)
+    filename_2 = os.path.basename(file_2)
+    print(f"Normalizing values in files: {filename_1}, {filename_2}")
 
-    # Read the original files
-    with open(file_1, 'r') as file_1:
-        lines_1 = file_1.readlines()
-    with open(file_2, 'r') as file_2:
-        lines_2 = file_2.readlines()
-
-    for line_1 in lines_1[1:]:
-        columns_1 = line_1.strip().split('\t')
-        for line_2 in lines_2[1:]:
-            columns_2 = line_2.strip.split('\t')
-        
-            SC1 = columns_1['1'].sum()
-            SC2 = columns_1['2'].sum()
-            SC3 = columns_1['3'].sum()
-            SC4 = columns_2['1'].sum()
-            SC5 = columns_2['2'].sum()
-            SC6 = columns_2['3'].sum()
-    
-            # Calculate the average of the sums
-            sum_SC = SC1 + SC2 + SC3 + SC4 + SC5 + SC6
-            avg_SC = sum_SC / 6
-    
-            # Normalize each row 
-            columns_1['norms_1'] = (columns_1['1'] / SC1) * avg_SC
-            columns_1['norms_2'] = (columns_1['2'] / SC2) * avg_SC
-            columns_1['norms_3'] = (columns_1['3'] / SC3) * avg_SC
-            columns_2['norms_1'] = (columns_2['1'] / SC4) * avg_SC
-            columns_2['norms_2'] = (columns_2['2'] / SC5) * avg_SC
-            columns_2['norms_3'] = (columns_2['3'] / SC6) * avg_SC
-    
-    # Write the normalized lines back to a new file
-    strain = filename_1.split('_')[1]
+    # assign variables for the conditions
     medium_1 = filename_1.split('_')[2]
     medium_2 = filename_2.split('_')[2]
     phase_1 = filename_1.split('_')[3]
     phase_2 = filename_2.split('_')[3]
-    
-    output_filename = 'strain' + 'medium_1' + 'medium_2' + 'phase_1' + 'phase_2' + '.txt'
-        
-    with open(output_filename, 'w') as file:
-        file.writelines()
-        
-        print(f"Normalized data written to: {output_filename}")
 
-# Computing the row-wise average + standard deviation 
-def statistics(df):
-    row_wise_average = df.mean(axis=1)
-    standard_deviation = df.std(axis=1)
-    df['Row_Average']= row_wise_average
-    df['STD'] = standard_deviation
+    if medium_1 == medium_2: 
+        suf_1 = phase_1
+        suf_2 = phase_2
+    elif phase_1 == phase_2:
+        suf_1 = medium_1
+        suf_2 = medium_2
 
-def merge_and_format(df1, df2, suf_1='', suf_2=''):
-    merged_df = pd.merge(df1, df2, on="Accession Number", how="outer", suffixes=(suf_1, suf_2))
-    merged_df.fillna(0, inplace=True)
-    merged_df['Annotation{}'.format(suf_1)] = merged_df['Annotation{}'.format(suf_1)].replace(0, "Unknown")
-    merged_df['Annotation{}'.format(suf_2)] = merged_df['Annotation{}'.format(suf_2)].replace(0, "Unknown")
-    return merged_df
+    # Read files into pandas dataframes
+    df1 = pd.read_csv(file_1, sep='\t')
+    df2 = pd.read_csv(file_2, sep='\t')
 
+    # Calculate sums for the columns
+    SC1, SC2, SC3 = df1.iloc[:, 3:6].sum()
+    SC4, SC5, SC6 = df2.iloc[:, 3:6].sum()
+
+    # Calculate the average of the sums
+    sum_SC = SC1 + SC2 + SC3 + SC4 + SC5 + SC6
+    avg_SC = sum_SC / 6
+
+    # Normalize the data
+    df1[f'norms_1_{suf_1}'] = (df1.iloc[:, 3] / SC1) * avg_SC
+    df1[f'norms_2_{suf_1}'] = (df1.iloc[:, 4] / SC2) * avg_SC
+    df1[f'norms_3_{suf_1}'] = (df1.iloc[:, 5] / SC3) * avg_SC
+
+    df2[f'norms_1_{suf_2}'] = (df2.iloc[:, 3] / SC4) * avg_SC
+    df2[f'norms_2_{suf_2}'] = (df2.iloc[:, 4] / SC5) * avg_SC
+    df2[f'norms_3_{suf_2}'] = (df2.iloc[:, 5] / SC6) * avg_SC
+
+    # Merge and format the dataframes
+    combined_df = merge_and_format(df1, df2, suf_1, suf_2)
+
+    # Calculate row-wise averages and standard deviations for normalized columns
+    combined_df[f'Row_Average_{suf_1}'] = combined_df[[f'norms_1_{suf_1}', f'norms_2_{suf_1}', f'norms_3_{suf_1}']].mean(axis=1)
+    combined_df[f'STD_{suf_1}'] = combined_df[[f'norms_1_{suf_1}', f'norms_2_{suf_1}', f'norms_3_{suf_1}']].std(axis=1)
+
+    combined_df[f'Row_Average_{suf_2}'] = combined_df[[f'norms_1_{suf_2}', f'norms_2_{suf_2}', f'norms_3_{suf_2}']].mean(axis=1)
+    combined_df[f'STD_{suf_2}'] = combined_df[[f'norms_1_{suf_2}', f'norms_2_{suf_2}', f'norms_3_{suf_2}']].std(axis=1)
+
+# After your merge and normalization function
 def calculate_log2(df1, df2):
     log2 = np.log2(df1.div(df2))
     log2.fillna(0, inplace=True)
     return log2
 
-# df1 and df2 are the dataframes containing the values of the triplicate measurements of treatment 1 and 2 respectively
 def calculate_pvalue(df1, df2):
-    num_values= df1.shape[0] # identifies the number of rows
+    num_values = df1.shape[0]
     p_values = []
-
-    print(num_values, df1.shape, df2.shape)
     
     for row in range(num_values):
-        #This line performs a two-sample t-test for the current row of data. df1.iloc[row].values and df2.iloc[row].values select the values of the current row from df1 and df2, respectively. These are passed as arguments to stats.ttest_ind, which computes the t-test for the means of two independent samples. The result is stored in the variable ttest_result.
         ttest_result = stats.ttest_ind(df1.iloc[row].values, df2.iloc[row].values)
         p_values.append(ttest_result.pvalue)
-        transformed_pvals = -1*np.log10(num_values*np.array(p_values))
+    
+    transformed_pvals = -1 * np.log10(num_values * np.array(p_values))
     return transformed_pvals
 
-def format_pval_df(pval):
-    pval_df = pd.DataFrame(pval, columns=["tpv"])
-    pval_df.fillna(0, inplace=True)
-    # Extract as variable
-    transformed_pval = pval_df["tpv"]
-    return transformed_pval
+# Add log2 fold change and p-values to your combined_df
+log2_df = calculate_log2(df1, df2)
+pval_df = calculate_pvalue(df1, df2)
+
+combined_df['Log2_Fold_Change'] = log2_df
+combined_df['Transformed_P_Value'] = pval_df
+
+# Save the updated combined_df with all the calculated columns
+output_filename = f'combined_{filename_1}_{filename_2}.txt'
+combined_df.to_csv(output_filename, sep='\t', index=False)
+
+print(f"Log2 fold change and p-values added. Data written to: {output_filename}"
+
 
 if __name__ == "__main__": 
     
-    if len(sys.argv) !=2: # If there is more than 1 argument to call this script, it will provide guidance on how to use it.
-        print("Usage: python format_proteomefile.py <input_foldername>")
-        sys.exit(1)
-    
-    folder = sys.argv[1]
-    format_proteomefiles(folder)
+    if len(sys.argv) != 3:
+        print("Usage: python statistics.py <input_filename_1> <input_filename_2>")
+    else:
+        normalization(sys.argv[1], sys.argv[2])
