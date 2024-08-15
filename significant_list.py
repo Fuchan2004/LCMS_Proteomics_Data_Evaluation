@@ -64,7 +64,7 @@ if __name__ == "__main__":
         sys.exit(1)
     
     inputfile = sys.argv[1]
-    output_folder = sys.argv[2]
+    output_path = sys.argv[2]
 
     # Load the input file into a DataFrame
     df = pd.read_csv(inputfile, sep='\t')
@@ -77,4 +77,4 @@ if __name__ == "__main__":
 
     title = os.path.basename(inputfile).replace(".txt", "")
     
-    significant_list(title, log2_fold_change=log2_fold_change, transformed_pvalues=transformed_pvalues, annotations=annotations, accessions=accessions output_path=output_folder)
+    significant_list(title, log2_fold_change=log2_fold_change, transformed_pvalues=transformed_pvalues, annotations=annotations, accessions=accessions, output_path=output_path)
