@@ -25,28 +25,28 @@ def annotate(folder):
         filename = os.path.basename(filepath)  # Get the filename
         print(f"Processing file: {filename}")
     
-    output_file_path = filepath.replace('_formatted.txt', '_annotated.txt')
+        output_file_path = filepath.replace('_formatted.txt', '_annotated.txt')
     
-    with open(filepath, 'r') as input_file, open(output_file_path, 'w') as output_file:
-        # Write the header line to the output file
-        header = input_file.readline().strip() + '\n'
-        output_file.write(header)
+        with open(filepath, 'r') as input_file, open(output_file_path, 'w') as output_file:
+            # Write the header line to the output file
+            header = input_file.readline().strip() + '\n'
+            output_file.write(header)
         
-        # Process each line in the input file
-        for line in input_file:
-            # Split the line into columns
-            columns = line.strip().split('\t')
-            spo_id = columns[2]  # Extract the SPO ID from column 3
+            # Process each line in the input file
+            for line in input_file:
+                # Split the line into columns
+                columns = line.strip().split('\t')
+                spo_id = columns[2]  # Extract the SPO ID from column 3
             
-            # Look up the annotation in the dictionary
-            annotation = SPO_dict.get(spo_id, 'Unknown')
-            columns[1] = annotation
+                # Look up the annotation in the dictionary
+                annotation = SPO_dict.get(spo_id, 'Unknown')
+                columns[1] = annotation
             
-            # Join the columns back into a line and write to the output file
-            output_line = '\t'.join(columns) + '\n'
-            output_file.write(output_line)
+                # Join the columns back into a line and write to the output file
+                output_line = '\t'.join(columns) + '\n'
+                output_file.write(output_line)
     
-    print(f"Annotated lines written to: {output_file_path}")
+        print(f"Annotated lines written to: {output_file_path}")
 
 
 if __name__ == "__main__": 
