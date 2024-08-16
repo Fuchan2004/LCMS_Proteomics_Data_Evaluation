@@ -96,5 +96,19 @@ do
     python volcano_plot.py "$file" /path/to/FIGURES/
 done
 ```
+
+In addition to plotting the data as volcano and xy plots, the script `significant_list.py` allows you to extract all significantly overexpressed proteins (the ones that are above the threshold specified in the volcano plots = log2FC>±0.5, p-value>2) and save them as list in *.csv format. To run the script type: 
+
+```
+python significant_list.py </path/input_filename.txt> </path/output_foldername/>
+```
+or as for loop: 
+```
+for file in /path/to/final/data/*.txt
+do
+    python significant_list.py "$file" </path/output_foldername/>
+done
+```
+
 **This is it! ENJOY YOUR DATA!**
 
