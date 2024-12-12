@@ -70,6 +70,10 @@ def normalization(file_1, file_2):
     df1 = pd.read_csv(file_1, sep='\t')
     df2 = pd.read_csv(file_2, sep='\t')
 
+    # Convert the columns to numeric, coercing any errors to NaN
+    df1.iloc[:, 3:6] = df1.iloc[:, 3:6].apply(pd.to_numeric, errors='coerce')
+    df2.iloc[:, 3:6] = df2.iloc[:, 3:6].apply(pd.to_numeric, errors='coerce')
+
     # Calculate sums for the columns
     SC1, SC2, SC3 = df1.iloc[:, 3:6].sum()
     SC4, SC5, SC6 = df2.iloc[:, 3:6].sum()

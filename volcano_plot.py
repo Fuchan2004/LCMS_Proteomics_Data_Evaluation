@@ -37,12 +37,47 @@ def volcano_plot(title, log2_fold_change, transformed_pvalues, annotations, outp
         yaxis_title=y_axis_title,
         paper_bgcolor='white',
         plot_bgcolor='white',
+        shapes=[
+            # Horizontal line for -log10(p-value) = 2
+            dict(
+                type='line',
+                xref='paper', x0=0, x1=1,  # Line spans the entire x-axis
+                yref='y', y0=1.25, y1=1.25,      # Line is fixed at y = 2
+                line=dict(
+                    color="grey",
+                    width=1,
+                    dash="dot",  # Dotted line style
+                ),
+            ),
+            # Vertical line for log2 fold change = 0.5
+            dict(
+                type='line',
+                xref='x', x0=0.5, x1=0.5,  # Line is fixed at x = 0.5
+                yref='paper', y0=0, y1=1,  # Line spans the entire y-axis
+                line=dict(
+                    color="grey",
+                    width=1,
+                    dash="dot",  # Dotted line style
+                ),
+            ),
+            # Vertical line for log2 fold change = -0.5
+            dict(
+                type='line',
+                xref='x', x0=-0.5, x1=-0.5,  # Line is fixed at x = -0.5
+                yref='paper', y0=0, y1=1,    # Line spans the entire y-axis
+                line=dict(
+                    color="grey",
+                    width=1,
+                    dash="dot",  # Dotted line style
+                ),
+            )
+        ]
     )
 
     colors = []
 
     for i in range(len(log2_fold_change)):
-        if transformed_pvalues[i] > 2:
+        if transformed_pvalues[i] > 1.25:
             if log2_fold_change[i] > 0.5:
                 colors.append('#db3232')
             elif log2_fold_change[i] < -0.5:
@@ -88,7 +123,7 @@ if __name__ == "__main__":
     # Extract the relevant columns
     log2_fold_change = df.iloc[:, 23]
     transformed_pvalues = df.iloc[:, 24]
-    annotations = df.iloc[:, 1] 
+    annotations = df.iloc[:, 2] 
 
     title = os.path.basename(inputfile).replace(".txt", "")
     
