@@ -44,7 +44,7 @@ def calculate_pvalue(df1, df2):
         ttest_result = stats.ttest_ind(df1.iloc[row].values, df2.iloc[row].values)
         p_values.append(ttest_result.pvalue)
     
-    transformed_pvals = -1 * np.log10(num_values * np.array(p_values))
+    transformed_pvals = -1 * np.log10(np.array(p_values))
     return transformed_pvals
 
 def normalization(file_1, file_2):    
