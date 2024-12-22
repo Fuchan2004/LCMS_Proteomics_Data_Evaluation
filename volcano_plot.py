@@ -123,7 +123,7 @@ if __name__ == "__main__":
     # Extract the relevant columns
     log2_fold_change = df.iloc[:, 23]
     transformed_pvalues = df.iloc[:, 24]
-    annotations = df.iloc[:, 2] 
+    annotations = df.iloc[:, 1] 
 
     title = os.path.basename(inputfile).replace(".txt", "")
     
