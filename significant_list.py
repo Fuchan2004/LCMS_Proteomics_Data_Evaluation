@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 '''
-This script is used to extract the significant values (log2 fold change > 0.5 & -log10(p-value) >2) from the proteome data. 
+This script extracts significant values (log2 fold change > 0.5 & -log10(p-value) > 1.3) from proteome data.
 
 USAGE: python significant.py </path/input_filename> </path/output_folder/>
 '''
@@ -18,7 +18,7 @@ def significant_list(title, log2_fold_change, transformed_pvalues, annotations, 
     accession_sign_minus = []
 
     for i in range(len(log2_fold_change)):
-        if transformed_pvalues[i] > 2:
+        if transformed_pvalues[i] > 1.3:
             if log2_fold_change[i] > 0.5:
                 sign_plus.append(annotations[i])
                 accession_sign_plus.append(accessions[i])
@@ -52,10 +52,19 @@ def significant_list(title, log2_fold_change, transformed_pvalues, annotations, 
     # Drop rows with all None values
     significant_df.dropna(how='all', inplace=True)
 
-    # Write the DataFrame to a file
-    output_filename = os.path.join(output_path, f"{title}_significant.csv")
-    significant_df.to_csv(output_filename, sep='\t', index=False)
-
+    # Write the DataFrame to a tab-delimited text file
+    output_filename = os.path.join(output_path, f"{title}_significant.txt")
+    with open(output_filename, 'w') as f:
+        # Write the header
+        f.write('Significant_Overexpressed\tAccession Number +\tSignificant_Underexpressed\tAccession Number -\n')
+        # Write each row, ensuring fields with special characters are preserved
+        for index, row in significant_df.iterrows():
+            f.write(
+                f"{row['Significant_Overexpressed']}\t"
+                f"{row['Accession Number +']}\t"
+                f"{row['Significant_Underexpressed']}\t"
+                f"{row['Accession Number -']}\n"
+            )
     return significant_df
 
 if __name__ == "__main__": 
