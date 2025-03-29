@@ -49,10 +49,10 @@ def volcano_plot(title, log2_fold_change, transformed_pvalues, annotations, outp
                     dash="dot",  # Dotted line style
                 ),
             ),
-            # Vertical line for log2 fold change = 0.5
+            # Vertical line for log2 fold change = 1
             dict(
                 type='line',
-                xref='x', x0=0.5, x1=0.5,  # Line is fixed at x = 0.5
+                xref='x', x0=1, x1=1,  # Line is fixed at x = 0.5
                 yref='paper', y0=0, y1=1,  # Line spans the entire y-axis
                 line=dict(
                     color="grey",
@@ -60,10 +60,10 @@ def volcano_plot(title, log2_fold_change, transformed_pvalues, annotations, outp
                     dash="dot",  # Dotted line style
                 ),
             ),
-            # Vertical line for log2 fold change = -0.5
+            # Vertical line for log2 fold change = -1
             dict(
                 type='line',
-                xref='x', x0=-0.5, x1=-0.5,  # Line is fixed at x = -0.5
+                xref='x', x0=-1, x1=-1,  # Line is fixed at x = -0.5
                 yref='paper', y0=0, y1=1,    # Line spans the entire y-axis
                 line=dict(
                     color="grey",
@@ -78,9 +78,9 @@ def volcano_plot(title, log2_fold_change, transformed_pvalues, annotations, outp
 
     for i in range(len(log2_fold_change)):
         if transformed_pvalues[i] > 1.25:
-            if log2_fold_change[i] > 0.5:
+            if log2_fold_change[i] > 1:
                 colors.append('#db3232')
-            elif log2_fold_change[i] < -0.5:
+            elif log2_fold_change[i] < -1:
                 colors.append('#3f65d4')
             else:
                 colors.append('rgba(150,150,150,0.5)')
